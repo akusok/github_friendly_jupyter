@@ -10,6 +10,7 @@ def get_cat_image(api_key):
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
         image_url = response.json()[0]["url"]
+        print(image_url)
         image_response = requests.get(image_url, stream=True)
         image_response.raw.decode_content = True
         return Image.open(image_response.raw)
